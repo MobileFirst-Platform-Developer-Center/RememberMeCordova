@@ -11,9 +11,9 @@ var UserAuthChallengeHandler = function() {
         
     userAuthChallengeHandler.handleChallenge = function(challenge) {
         WL.Logger.debug("handleChallenge");
+        showLoginDiv();
         isChallenged = true;
         if (challenge.errorMsg == null){
-            showLoginDiv();
             document.getElementById('remainingAttempts').innerHTML = "Remaining Attempts: " + challenge.remainingAttempts;
         } else {
             document.getElementById('remainingAttempts').innerHTML = "Remaining Attempts: " + challenge.remainingAttempts + "<br/>" + challenge.errorMsg;
