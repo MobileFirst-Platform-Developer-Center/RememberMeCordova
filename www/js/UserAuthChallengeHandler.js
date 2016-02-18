@@ -1,26 +1,25 @@
-
-
-///////////////Add logs!!!!
-
-
-var UserAuthChallengeHandler = function() {
+var UserLoginChallengeHandler = function() {
     var isChallenged = false;
-    var userAuthChallengeHandler = WL.Client.createWLChallengeHandler('UserAuthSecurityCheck');
+    var securityCheckName = 'UserLogin';
+    var userLoginChallengeHandler = WL.Client.createWLChallengeHandler(securityCheckName);
+    
     document.getElementById("login").addEventListener("click", login);
     document.getElementById("logout").addEventListener("click", logout);
+    
+    userLoginChallengeHandler.securityCheckName = securityCheckName;
         
-    userAuthChallengeHandler.handleChallenge = function(challenge) {
+    userLoginChallengeHandler.handleChallenge = function(challenge) {
         WL.Logger.debug("handleChallenge");
         showLoginDiv();
         isChallenged = true;
-        if (challenge.errorMsg == null){
-            document.getElementById('remainingAttempts').innerHTML = "Remaining Attempts: " + challenge.remainingAttempts;
-        } else {
-            document.getElementById('remainingAttempts').innerHTML = "Remaining Attempts: " + challenge.remainingAttempts + "<br/>" + challenge.errorMsg;
+        var statusMsg = "Remaining Attempts: " + challenge.remainingAttempts;
+        if (challenge.errorMsg != null){
+            statusMsg = statusMsg + "<br/>" + challenge.errorMsg;
         }
+        document.getElementById("statusMsg").innerHTML = statusMsg;
     }
     
-    userAuthChallengeHandler.processSuccess = function(data) {
+    userLoginChallengeHandler.processSuccess = function(data) {
         WL.Logger.debug("processSuccess");
         isChallenged = false;
         document.getElementById ("rememberMe").checked = false;
@@ -30,7 +29,7 @@ var UserAuthChallengeHandler = function() {
         showProtectedDiv();
     }
     
-    userAuthChallengeHandler.handleFailure = function(error) {
+    userLoginChallengeHandler.handleFailure = function(error) {
         WL.Logger.debug("handleFailure: " + error.failure);
         isChallenged = false;
         if (error.failure != null){
@@ -49,27 +48,29 @@ var UserAuthChallengeHandler = function() {
             return;
         }
         if (isChallenged){
-            userAuthChallengeHandler.submitChallengeAnswer({'username':username, 'password':password, rememberMe: rememberMeState});    
+            userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password, rememberMe: rememberMeState});    
         } else {
-            WLAuthorizationManager.login('UserAuthSecurityCheck',{'username':username, 'password':password, rememberMe: rememberMeState}).then(
+            WLAuthorizationManager.login(securityCheckName,{'username':username, 'password':password, rememberMe: rememberMeState}).then(
                 function () {
                     WL.Logger.debug("login onSuccess");
                 },
                 function (response) {
-                    WL.Logger.debug("login onFailure: " + response.errorMsg);
-                })
+                    WL.Logger.debug("login onFailure: " + JSON.stringify(response));
+                });
         }
     }
     
     function logout() {
-    WLAuthorizationManager.logout('UserAuthSecurityCheck').then(
+    WLAuthorizationManager.logout(securityCheckName).then(
         function () {
             WL.Logger.debug("logout onSuccess");
             location.reload();
         },
         function (response) {
-            WL.Logger.debug("logout onFailure: " + response.errorMsg);
-        })
+            WL.Logger.debug("logout onFailure: " + JSON.stringify(response));
+        });
     }
+    
+    return userLoginChallengeHandler;
     
 };

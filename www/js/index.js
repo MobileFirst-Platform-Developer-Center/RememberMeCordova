@@ -12,17 +12,17 @@ var wlInitOptions = {
 // Called automatically after MFP framework initialization by WL.Client.init(wlInitOptions).
 function wlCommonInit(){
     document.getElementById("getBalance").addEventListener("click", getBalance);
-    UserAuthChallengeHandler();
+    var userLoginChallengeHandler = UserLoginChallengeHandler();
     
-    WLAuthorizationManager.obtainAccessToken('UserAuthSecurityCheck').then(
+    WLAuthorizationManager.obtainAccessToken(userLoginChallengeHandler.securityCheckName).then(
         function (accessToken) {
             WL.Logger.debug("obtainAccessToken onSuccess");
             showProtectedDiv(); 
         },
         function (response) {
-            WL.Logger.debug("obtainAccessToken onFailure: " + response.errorMsg);
+            WL.Logger.debug("obtainAccessToken onFailure: " + JSON.stringify(response));
             showLoginDiv();
-    })
+    });
 }
 
 function showLoginDiv() {
@@ -45,8 +45,8 @@ function getBalance () {
             document.getElementById("resultLabel").innerHTML = "Balance: " + response.responseText;
         },
         function (response) {
-            WL.Logger.debug("Failed to get balance: " + response.errorMsg);
+            WL.Logger.debug("Failed to get balance: " + JSON.stringify(response));
             document.getElementById("resultLabel").innerHTML = "Failed to get balance.";
-        })
+        });
 }
 
