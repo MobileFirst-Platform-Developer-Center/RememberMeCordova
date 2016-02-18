@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+    <!-- load script with wlCommonInit defined before loading cordova.js -->
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/UserAuthChallengeHandler.js"></script>
+    <title>Remember Me</title>
+  </head>
+  <body>
+      <div id="header">
+          <h1>Remember Me</h1>
+      </div>
+      <div id="wrapper">
+          <div id="loginDiv" style="display: none;">
+                <input type="text" placeholder="Enter Username" id="username" /><br />
+                <input type="password" placeholder="Enter Password" id="password" /><br/>
+                <p id="rememberMeText"><input type="checkbox" id="rememberMe">Remember me</p>
+                <br clear="all"/>
+                <button id="login">Login</button>
+                <p class="label" id="remainingAttempts"></p>
+          </div>
+
+          <div id="protectedDiv" style="display: none;">
+                <p class="label" id ="helloUser"></p>
+                <button id="getBalance">Get Balance</button>
+                <button id="logout">Logout</button>
+                <p class="label" id="resultLabel"></p>
+          </div>
+      </div>
+  </body>
+</html>
