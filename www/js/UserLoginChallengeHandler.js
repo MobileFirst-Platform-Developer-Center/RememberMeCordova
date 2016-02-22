@@ -9,7 +9,7 @@ var UserLoginChallengeHandler = function() {
     userLoginChallengeHandler.securityCheckName = securityCheckName;
         
     userLoginChallengeHandler.handleChallenge = function(challenge) {
-        WL.Logger.debug("handleChallenge");
+        WL.Logger.debug("handleChallenge");       
         showLoginDiv();
         isChallenged = true;
         var statusMsg = "Remaining Attempts: " + challenge.remainingAttempts;

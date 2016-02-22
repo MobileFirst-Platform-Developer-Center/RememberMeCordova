@@ -13,7 +13,7 @@ var wlInitOptions = {
 function wlCommonInit(){
     document.getElementById("getBalance").addEventListener("click", getBalance);
     var userLoginChallengeHandler = UserLoginChallengeHandler();
-    
+
     WLAuthorizationManager.obtainAccessToken(userLoginChallengeHandler.securityCheckName).then(
         function (accessToken) {
             WL.Logger.debug("obtainAccessToken onSuccess");
@@ -27,7 +27,7 @@ function wlCommonInit(){
 
 function showLoginDiv() {
     document.getElementById('protectedDiv').style.display = 'none'; 
-    document.getElementById('remainingAttempts').innerHTML = "";
+    document.getElementById('statusMsg').innerHTML = "";
     document.getElementById('loginDiv').style.display = 'block';
 }
 
