@@ -1,18 +1,3 @@
-<!--
-Copyright 2016 IBM Corp.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
--->
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.sample.remembermecordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:mfp="http://www.ibm.com/mobilefirst/cordova-plugin-mfp">
     <name>RememberMeCordova</name>
@@ -105,14 +90,14 @@ limitations under the License.
         <splash height="360" src="res/screen/windows/Wide310x150Logo.scale-240.png" width="744" />
     </platform>
     <mfp:android>
-        <mfp:sdkChecksum>2659348830</mfp:sdkChecksum>
+        <mfp:sdkChecksum>1043918499</mfp:sdkChecksum>
         <mfp:appChecksum>0</mfp:appChecksum>
         <mfp:security>
             <mfp:testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3" />
         </mfp:security>
     </mfp:android>
     <mfp:ios>
-        <mfp:sdkChecksum>839714985</mfp:sdkChecksum>
+        <mfp:sdkChecksum>3297374547</mfp:sdkChecksum>
         <mfp:appChecksum>0</mfp:appChecksum>
         <mfp:security>
             <mfp:testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3" />
@@ -139,9 +124,9 @@ limitations under the License.
         </mfp:windows10>
         <mfp:appChecksum>0</mfp:appChecksum>
     </mfp:windows>
-    <mfp:platformVersion>8.0.0.00-20160222-0907</mfp:platformVersion>
+    <mfp:platformVersion>8.0.0.00-20160228-1441</mfp:platformVersion>
     <mfp:clientCustomInit enabled="false" />
-    <mfp:server runtime="mfp" url="" />
+    <mfp:server runtime="mfp" url="http://169.254.43.38:9080" />
     <mfp:directUpdateAuthenticityPublicKey />
     <mfp:languagePreferences>en</mfp:languagePreferences>
 </widget>

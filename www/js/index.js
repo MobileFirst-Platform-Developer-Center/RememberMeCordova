@@ -13,7 +13,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-ar Messages = {
+var Messages = {
     // Add here your messages for the default language.
     // Generate a similar file with a language suffix containing the translated messages.
     // key1 : message1,
