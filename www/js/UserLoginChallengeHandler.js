@@ -28,11 +28,11 @@ var UserLoginChallengeHandler = function() {
         showLoginDiv();
         isChallenged = true;
         var statusMsg = "Remaining Attempts: " + challenge.remainingAttempts;
-        if (challenge.errorMsg != null){
+        if (challenge.errorMsg !== null){
             statusMsg = statusMsg + "<br/>" + challenge.errorMsg;
         }
         document.getElementById("statusMsg").innerHTML = statusMsg;
-    }
+    };
 
     userLoginChallengeHandler.processSuccess = function(data) {
         WL.Logger.debug("processSuccess");
@@ -42,23 +42,23 @@ var UserLoginChallengeHandler = function() {
         document.getElementById('password').value = "";
         document.getElementById("helloUser").innerHTML = "Hello, " + data.user.displayName;
         showProtectedDiv();
-    }
+    };
 
     userLoginChallengeHandler.handleFailure = function(error) {
         WL.Logger.debug("handleFailure: " + error.failure);
         isChallenged = false;
-        if (error.failure != null){
+        if (error.failure !== null){
             alert(error.failure);
         } else {
             alert("Failed to login.");
         }
-    }
+    };
 
     function login() {
         var username = document.getElementById('username').value;
         var password = document.getElementById('password').value;
         var rememberMeState = document.getElementById ("rememberMe").checked;
-        if (username == "" || password == ""){
+        if (username === "" || password === ""){
             alert("Username and password are required");
             return;
         }
