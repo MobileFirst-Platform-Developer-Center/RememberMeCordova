@@ -58,11 +58,8 @@ button {
 	width: 44%;
 	height: 3em;
 	font-size: 0.8em;
-	margin: 0 0 0.2em 0;
 	background-color: #eee;
-    margin-left: 30px;
     margin-left: 14px;
-    margin-top: 5px;
 }
 
 #getBalance {
