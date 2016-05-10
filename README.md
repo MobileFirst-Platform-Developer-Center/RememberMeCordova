@@ -1,7 +1,7 @@
 IBM MobileFirst Platform Foundation
 ===
 ## RememberMeCordova
-A sample application demonstrating use of the UserAuthentication Security Check.
+A sample application demonstrating Remember Me functionality.
 
 ### Tutorials
 https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/user-authentication/
