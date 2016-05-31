@@ -16,7 +16,7 @@
 var UserLoginChallengeHandler = function() {
     var isChallenged = false;
     var securityCheckName = 'UserLogin';
-    var userLoginChallengeHandler = WL.Client.createWLChallengeHandler(securityCheckName);
+    var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler(securityCheckName);
 
     document.getElementById("login").addEventListener("click", login);
     document.getElementById("logout").addEventListener("click", logout);
@@ -34,7 +34,7 @@ var UserLoginChallengeHandler = function() {
         document.getElementById("statusMsg").innerHTML = statusMsg;
     };
 
-    userLoginChallengeHandler.processSuccess = function(data) {
+    userLoginChallengeHandler.handleSuccess = function(data) {
         WL.Logger.debug("processSuccess");
         isChallenged = false;
         document.getElementById ("rememberMe").checked = false;
@@ -48,6 +48,11 @@ var UserLoginChallengeHandler = function() {
         WL.Logger.debug("handleFailure: " + error.failure);
         isChallenged = false;
         if (error.failure !== null){
+            if (error.failure == "Account blocked") {
+                document.getElementById("loginDiv").style.display = "none";
+                document.getElementById("blockedDiv").style.display = "block";
+                document.getElementById("blockedMsg").innerHTML = "Your account is blocked. Try again later.";
+            }
             alert(error.failure);
         } else {
             alert("Failed to login.");
