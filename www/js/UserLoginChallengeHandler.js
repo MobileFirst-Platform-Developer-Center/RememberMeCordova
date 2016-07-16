@@ -53,9 +53,9 @@ var UserLoginChallengeHandler = function() {
                 document.getElementById("blockedDiv").style.display = "block";
                 document.getElementById("blockedMsg").innerHTML = "Your account is blocked. Try again later.";
             }
-            navigator.notification.alert(error.failure);
+            alert(error.failure);
         } else {
-            navigator.notification.alert("Failed to login.");
+            alert("Failed to login.");
         }
     };
 
@@ -64,7 +64,7 @@ var UserLoginChallengeHandler = function() {
         var password = document.getElementById('password').value;
         var rememberMeState = document.getElementById ("rememberMe").checked;
         if (username === "" || password === ""){
-            navigator.notification.alert("Username and password are required");
+            alert("Username and password are required");
             return;
         }
         if (isChallenged){
